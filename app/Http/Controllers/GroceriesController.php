@@ -31,6 +31,9 @@ class GroceriesController extends Controller
         foreach ($groceries as $key => $grocerie) {
             $total += $grocerie->subtotal_price;
         }
+
+        // commentaren die niet meer gebruikt worden zo veel mogelijk weglaten voor overzichtelijkere code
+
         // dd($total);
 
         // $subTotalPrice = $groceries->first()->subtotal_price;
@@ -59,6 +62,10 @@ class GroceriesController extends Controller
     public function store(Request $request)
     {
         // dump(request()->all());
+
+        // dezelfde validation wordt in de update functie van deze controller gebruikt. Om herhaling te voorkomen van deze
+        // validator, kun je deze ook in een eigen form request validator class stoppen die je daarna steeds weer opniew
+        // kunt gebruiken. Voor meer info zie: https://laravel.com/docs/8.x/validation#form-request-validation
         Grocerie::create(request()->validate([
             'grocerie' => ['required', 'min:2'],
             'price' => ['required', 'numeric', 'min:0'],
