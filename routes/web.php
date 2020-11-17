@@ -23,6 +23,9 @@ use App\Http\Controllers\GroceriesController;
 //     return controllers('groceries');
 // });
 
+
+// ipv alle routes seperaat te definieeren kun je dit in een keer doen met een resource route.
+// zie ook : https://laravel.com/docs/8.x/controllers#resource-controllers
 Route::get('/groceries', [GroceriesController::class, 'index'])->name('groceries.index');
 Route::get('/groceries/create', [GroceriesController::class, 'create'])->name('groceries.create');
 Route::post('/groceries', [GroceriesController::class, 'store'])->name('groceries.store');
